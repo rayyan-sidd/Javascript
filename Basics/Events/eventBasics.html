@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events
+    </title>
+</head>
+<body style="background: #212121; color: aliceblue;">
+    <h2>Amazing Image</h2>
+    <ul id="images">
+        <li><img width="200px" id="cherryBlossoms" src="https://images.pexels.com/photos/1440476/pexels-photo-1440476.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="cherry"></li>
+    <li><img width="200px" id="shrine" src="https://images.pexels.com/photos/301614/pexels-photo-301614.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""></li>
+    <li><img width="200px" id="houses" src="https://images.pexels.com/photos/2187605/pexels-photo-2187605.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""></li>
+    <li><img width="200px" id="mt.fuji" src="https://images.pexels.com/photos/1108701/pexels-photo-1108701.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""></li>
+    <a style="color: aliceblue; text-decoration: none;" href="https://www.google.com" id="google">Google</a>
+    </ul>
+
+    <script>
+        //lets say we want to add an alert on clicking a photo, 
+        //Approach 1:
+        document.getElementById('cherryBlossoms').onclick = function(){
+            alert('Cherry Blossoms')
+        } //this approach will work but isnt effficient in modern coding style (limits to access to many features)
+
+        //Approach 2:
+        document.getElementById('shrine').addEventListener('click',function(event){
+            alert('Holy Shrine')
+        }) //best approach!
+
+        //Approach 3: (attachEvent)
+        //Approach 4: jQuery - o
+
+
+        //Important topics to study from events:
+        //types of events, timeStamp, preventDefault
+        //target, toElement, srcElement, currentTarget,
+        //clientX, clientY, offsetX, offsetY,
+        //altkey, shiftkey, keycodes
+
+
+        //Event Propagation: Bubbling (by default)
+        document.getElementById('images').addEventListener ('click', function(){ //adds an click event to the 'ul' (parent) list block
+        console.log('ul is clicked');
+        },false)
+
+        document.getElementById('houses').addEventListener('click', function(event){ //adds a click event to the 'houses'(child) image list
+        console.log('Houses');
+        }, false)
+        //first 'houses' is printed and then 'ul is clicked'. This is called Bubbling propagation of events where we use 'false' as the third parameter in the 'addEventListener' i.e., from first child element's event is executed and then the parent element's event.
+
+        //Event Propagation: Capturing
+        document.querySelector('body').addEventListener('click', function(){
+            console.log('body is clicked');
+        },true) //in this first the event assigned to parent element is executed and then the child element, unlike the bubbling propagation. We have to use 'true' as the third parameter.
+
+
+        //Stopping the event Propagation:
+
+        document.getElementById('mt.fuji').addEventListener('click', function(event){
+            console.log('Mt. Fuji');
+            event.stopPropagation() //this will stop the propagation of events and only the elements holding 'true' as the third parameter in their event function will be executed (Capcturing.)
+        },true )  //first 'body is clicked' will be printed and then 'Mt.Fuji'
+
+
+        //PreventDefault(): is used to stop/prevent the event from their default behaviour,
+        
+        document.getElementById('google').addEventListener('click', function(event){
+           event.preventDefault() //this will stop that 'Google' anchor tag to navigate to 'www.google.com'
+        })
+
+
+        //some important functions:
+
+        document.querySelector('#images').addEventListener('click', function(event){
+            console.log(event.target.parentNode); //gives the parent element of the targetted element
+
+            //to remove the images we need to remove the whole 'li' tag i.e., the parent element of the target image.we use '.remove()' to remove the elements:
+        
+            let removeElement = event.target.parentNode
+            removeElement.remove()//this will remove the clicked image from the page.
+
+            //another approach:
+            removeElement.parentNode.removeChild(removeElement) //accessing the parent element and then removing the child
+        })
+
+
+        //.tagName :earlier event function works but it removes any and every parent element of the target element but by using .tagName we can restrict the event just to the descried tag type. for example:
+        document.querySelector('#images').addEventListener('click', function(event){
+            if(event.target === 'IMG')
+            {
+                let removeElement = event.target.parentNode
+            removeElement.remove()
+            }
+        })
+
+    </script>
+</body>
+</html>

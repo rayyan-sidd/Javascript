@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body style="background-color: rgb(44, 43, 43); color: white;">
+    
+</body>
+<script>
+   const div = document.createElement('div')
+   console.log(div);
+   div.className = "main"
+   div.id = Math.round(Math.random()*10 + 1)
+   div.setAttribute("title", "Hello")
+   div.style.color = "orange"
+    //div.innerText = "Hello firands, Coding Karlo" 
+    //another efficient way to initialize tex:
+    const addText = document.createTextNode("Hello firands, Coding karlo")
+    div.appendChild(addText)
+    document.body.appendChild(div)
+    
+</script>
+</html>

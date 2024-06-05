@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timout Function </title>
+</head>
+<body>
+    <h1>Hello Brothers!</h1>
+    <button id="stop">Stop</button>
+    <script>
+
+        //setTimeout():
+        setTimeout(function(){
+            console.log("Rayyan");
+        },2000) //prints "Rayyan" after 2 seconds.
+
+        //another way:
+        const name = function(){
+            console.log("Rayyan");
+        }
+        setTimeout(name, 2000) //same thing
+
+        //clearTimeout():
+        const change = function(){
+            document.querySelector('h1').innerHTML = 'LOL'
+        }
+        const timeout = setTimeout(change, 3000) //this will change the heading from 'Hello Brothers!' to 'LOL' in 3 seconds but if we want to stop the change on clicking the 'stop' button, we can use clearTimeout() Function:
+
+        document.querySelector('#stop').addEventListener('click',function(e){
+            clearTimeout(timeout)
+        }) //this will stop the change on clicking the stop button.
+    </script>
+</body>
+</html>
