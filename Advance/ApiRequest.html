@@ -8,7 +8,29 @@
 <body>
     
     <script>
-        
+        //XMLHttpRequest: (read mdn doc)
+
+       const xhr = new XMLHttpRequest() //creating an object using new keyword.
+
+       const requestUrl = 'https://randomuser.me/api/'
+       xhr.open('GET', requestUrl) //two parameters: Method (string) and a url (string)
+        xhr.send() 
+
+        console.log(xhr.readyState);  // 1  The XMLHttpRequest.readyState property returns the state an XMLHttpRequest client is in.
+
+        xhr.onreadystatechange = function(){ //'xhr.onreadystatechange' takes a function and performs the operation whenever the sate of request client is changed.
+
+        console.log(xhr.readyState); // 2 3 4
+
+        if(xhr.readyState === 4)
+        {  const data = JSON.parse(this.responseText)
+            console.log(data);
+            console.log(data.results[0].picture.thumbnail);
+        }
+        }
+
+          
+
     </script>
 </body>
 </html>
