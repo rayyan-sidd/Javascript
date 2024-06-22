@@ -145,3 +145,49 @@ const arr1 = [
 arr1.forEach( (item) => {
     console.log(`${item.fileExtension} is the file extension for ${item.langName}`);
 } )
+
+
+
+//Prototypes:
+
+function multiplyBy5(num){
+    return num*5
+}
+multiplyBy5.halua = 2
+console.log(multiplyBy5.halua);  //2 (yes function is also an object in js) 
+console.log(multiplyBy5(5));//25
+console.log(multiplyBy5.prototype);// {}
+
+function createUser(username, score){
+     this.username = username
+     this.score = score
+}
+
+createUser.prototype.increment = function(){
+    this.score++
+}
+
+createUser.prototype.printMe = function(){
+    console.log(`score of ${this.user} is ${this.score}`);
+}
+
+const rayyan = new createUser('Rayyan', '1500') //if we dont write 'new' keyword, it'll return "TypeError: Cannot read properties of undefined (reading 'increment')"
+const maaz = new createUser('Maaz',  150)
+
+rayyan.increment() //we dont need to access it using 'rayyan.prototype.increment()', JS does is implicitly just like in arrays and all.
+rayyan.printMe()
+
+/*
+
+Here's what happens behind the scenes when the new keyword is used:
+
+A new object is created: The new keyword initiates the creation of new JavaScript object.
+
+A prototype is linked: The newly created object gets linked to the prototype property of the constructor function. This means that it has access to properties and methods defined on the constructor's prototype.
+
+The constructor is called: The constructor function is called with the specified arguments and this is bound to the newly created object. If no explicit return value is specified from the constructor. JavaScript assumes this, the newly created object, to be the intended return value.
+
+The new object is returned: After the constructor function has been called, if it doesn't return a non-primitive value (object, array, function, etc.), the newly created object is returned.
+
+ */
+
