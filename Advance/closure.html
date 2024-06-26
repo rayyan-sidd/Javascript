@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+<body style="background-color: #212121;">
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+</body>
+    <script>
+    function outer(){
+        let name = 'Rayyan'
+        function inner(){
+            console.log(name); //lexical scoping
+        }
+        inner()
+    }
+    outer()
+
+
+    //Closure:
+    function makeFunc(){
+        let name = "halwa"
+        function display(){
+            console.log(name);
+        }
+        return display
+    }
+    const myFunc = makeFunc() //Closure: it returns the whole lexical scope of the function and not just the functional execution context.
+    myFunc() 
+    
+    </script>
+    <script>
+        // document.getElementById('orange').onclick = function(){
+        //     document.body.style.backgroundColor = `orange`
+        // }
+        // document.getElementById('green').onclick = function(){
+        //     document.body.style.backgroundColor = `green`
+        // }
+
+        function clickHandler(color){
+            document.body.style.backgroundColor = `${color}` //doesnt work as it changes the bg color without even clicking the button
+
+            return function(){
+                document.body.style.backgroundColor = `${color}`
+            }
+        }
+        document.getElementById('orange').onclick = clickHandler('orange') 
+        document.getElementById('green').onclick = clickHandler('green')
+
+        
+    </script>
+</html>
