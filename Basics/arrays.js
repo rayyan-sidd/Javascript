@@ -46,7 +46,7 @@ const arr5 = [
     }
 ]
 
-arr1.forEach( (item) => {
+arr5.forEach( (item) => {
     console.log(`${item.fileExtension} is the file extension for ${item.langName}`);
 } )
 
