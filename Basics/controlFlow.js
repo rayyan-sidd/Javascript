@@ -16,7 +16,6 @@ if(score >= 100){
 
 console.log(power); //Fire
 
-
 //switch:
 const month = 3 
 switch (month) {  //month = key
@@ -58,12 +57,7 @@ val1 = null ?? 100 ?? 200
 console.log(val1); //100
 
 /*Ternary operators: ? :
-condition : true ? false
+condition ? true : false
 */
 const n = 100
-n <= 80 ? console.log("less than 80") : console.log("more than 80");
-
-
-/* 
-
-*/
+n <= 80 ? console.log("less than or equal to 80") : console.log("more than 80");

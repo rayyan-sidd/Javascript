@@ -1,5 +1,5 @@
 let value = "33"
-console.log(typeof score); //string
+console.log(typeof value); //string
 let valueInNumber = Number(value) //conversion of string to integer
 console.log(typeof valueInNumber); // Number
 
@@ -52,16 +52,16 @@ console.log(2%3); //remainder
 
 
 let str1 = "hello"
-let str2 = " rayyan"
+let str2 = "rayyan"
 let str3 = str1 + str2 //string addition
-console.log(str3); //hello rayyan
+console.log(str3); //hellorayyan
 
 
 //major confusions (dont pay much heed to this just keep learning!)
 
-console.log("2" + 1); //21
-console.log(2 + "1"); //21
-console.log("2" + 1 + 1); //211
-console.log(2 + 1 + "1"); //31
+console.log("2" + 1); //21 (String)
+console.log(2 + "1"); //21 (String)
+console.log("2" + 1 + 1); //211 (String)
+console.log(2 + 1 + "1"); //31 (String)
 
 
